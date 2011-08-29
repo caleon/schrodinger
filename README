@@ -1,0 +1,62 @@
+######################
+# Schrodinger's Cat ##
+######################
+
+Able to avoid common patterns like: user_or_id.is_a?(User) ? user_or_id.id : user_or_id
+in favor of user_or_id.if_a?(User).id
+or          user_or_id.if_a?(User, :else => user_or_id).id
+or          user_or_id.only_if_a?(User) || user_or_id
+
+####################
+# Note:           ##
+####################
+
+These can't be overriden as they are not methods but low-level operators... ):
+  define_method(:"&&") {|obj| false }; define_method(:"||") {|obj| obj }
+which means we can't reliably do something like record.assuming_a(User).authentications.first || raise "You didn't supply a user with authentications!"
+
+because if sc.is_a?(SchrodingersCat), we ideally want:
+sc || false     # => false
+true && sc      # => false
+but instead, as || and && are low-level operators for short-circuiting, we get:
+sc || false     # => sc
+true && sc      # => sc
+
+However, though normally nil is the only object which should respond to #nil? with a true, so does SchrodingersCat whose MODEL_OBJECT is nil.
+
+##############
+# Examples: ##
+##############
+
+if user_or_id.is_a?(User) then do #id, else just return user_or_id
+
+Ex: user_or_id = User.first
+    user_or_id.if_a?(User).id
+=>  1
+    user_or_id = User.first.id
+    user_or_id.if_a?(User).id
+=>  1
+
+
+Only if user_or_id.is_a?(User) run chained method normally. Otherwise, return nil on chained method call.
+
+Ex: possible_match = "hello".match(/ello/)
+    possible_match.only_if_a?(MatchData)[0]
+=>  "ello"
+    possible_match = "hello".match(/superman/)
+    possible_match.only_if_a?(MatchData)[0]
+=>  nil
+
+
+if user_or_id.is_a?(User) continue with chain, else continue returning Schrodinger's Cat.
+
+Ex: user_or_id = User.first
+    res = user_or_id.assuming_a(User).authentications.first.provider # assuming an authentications record exists.
+=>  "facebook"
+    res.class
+=>  String
+    user_or_id = User.find_by_email('noone@kibblr.com') # if there is no user with ID=999,
+    res = user_or_id.assuming_a(User).authentications.first.provider
+=>  nil
+    res.class
+=>  SchrodingersCat
