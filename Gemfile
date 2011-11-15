@@ -1,6 +1,6 @@
 source "http://rubygems.org"
 
-# Declare your gem's dependencies in feedbaq.gemspec.
+# Declare your gem's dependencies in schrodinger.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
 # development dependencies will be added by default to the :development group.
 gemspec
@@ -15,3 +15,4 @@ gem "jquery-rails"
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+gem 'core_utilities', :git => 'git://github.com/caleon/core_utilities.git'
