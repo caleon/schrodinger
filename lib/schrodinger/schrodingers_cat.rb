@@ -1,6 +1,3 @@
-require File.expand_path('../schrodingers_cat/dependencies', __FILE__)
-require File.expand_path('../schrodingers_cat/core_ext',     __FILE__)
-
 class SchrodingersCat
   #######################
   ## Schrodinger's Cat ##
