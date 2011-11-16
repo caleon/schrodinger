@@ -2,3 +2,6 @@
 .bundle
 Gemfile.lock
 pkg/*
+test/dummy/db/*.sqlite3
+test/dummy/db/schema.rb
+test/dummy/log/*.log
