@@ -36,9 +36,9 @@ class SchrodingersCat
   end
   #delegate *[ 'inspect', 'to_s', 'to_i', 'nil?', 'empty?' ,'blank?' ].map(&:intern), :to => :MODEL_OBJECT
   
-  if Rails.env.development?
-    def inspect; "nil (SchrodingersCat)"; end
-  end
+  # if Rails.env.development?
+  #   def inspect; "nil (SchrodingersCat)"; end
+  # end
 
   [ "==", "eql?", "&", "^", "|" ].each do |meth|
     class_eval %{ def #{meth}(other); MODEL_OBJECT.#{meth}(other); end; }
