@@ -6,8 +6,12 @@
 
 == Use case:
 
-Able to avoid common patterns like: user_or_id.is_a?(User) ? user_or_id.id : user_or_id
+Able to avoid common patterns like:
+
+  user_or_id.is_a?(User) ? user_or_id.id : user_or_id
+
 in favor of
+
   user_or_id.if_a?(User).id # or
   user_or_id.if_a?(User, :else => user_or_id).id
   user_or_id.only_if_a?(User) || user_or_id
@@ -68,8 +72,8 @@ If user_or_id.is_a?(User) continue with chain, else continue returning Schroding
     	res = user_or_id.assuming_a(User).authentications.first.provider # assuming an authentications record exists.
   =>  "facebook"
     	res.class
-	=>  String
-      user_or_id = User.find_by_email('noone@kibblr.com') # if there is no user with ID=999,
+  =>  String
+      user_or_id = User.find_by_email('nobody@juscribe.com') # if there is no user with that email,
     	res = user_or_id.assuming_a(User).authentications.first.provider
   =>  nil
     	res.class

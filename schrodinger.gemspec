@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'activesupport', '~> 3.1.1'
   s.add_development_dependency "rails", "~> 3.1.1"
-  s.add_dependency 'core_utilities', '~> 0.1.0'
+  s.add_dependency 'core_utilities', '~> 0.1.3'
 
   s.add_development_dependency "sqlite3"
 end
