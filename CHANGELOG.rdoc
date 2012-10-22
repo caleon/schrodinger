@@ -1,3 +1,11 @@
+== 1.0.0
+
+* Finally added test coverage
+* Rearchitecting source for Jeweler
+* Removing #present_else and #significance_else because those are equivalent to #presence and #significance
+* Doing away with dependency on 'significance' gem.
+* Initially this was hosted as 'schrodingers_cat' in GitHub. Then, wanting to do away with the underscore, I had made it 'schrodinger'. Now with an updated push to Rubygems, the gem is now called 'schrodingers-cat'.
+
 == 0.1.4
 
 * Additionally switches to justools instead of core utilities
