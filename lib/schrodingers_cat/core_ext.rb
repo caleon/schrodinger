@@ -52,16 +52,16 @@ class Object
   def assuming_a(*others, &block)
     if_a?(*others.merge_options(:chain => true), &block)
   end
-  
+
   ##################################
   # Exact comparison of #== in is_one_of? rather than utilizing #=== in #is_one_kind_of
   ###############################
-  def if_equals_a?(*others, &block);                     if_a?(*others.merge_options(:check     => :is_included_in?), &block); end
-  def unless_equals_a?(*others, &block);          if_equals_a?(*others.merge_options(:opposite  => true),             &block); end
-  def only_if_equals_a?(*others, &block);         if_equals_a?(*others.merge_options(:else      => nil),              &block); end
-  def only_unless_equals_a?(*others, &block); unless_equals_a?(*others.merge_options(:else      => nil),              &block); end
-  def assuming_equals_a(*others, &block);         if_equals_a?(*others.merge_options(:chain     => true),             &block); end
-  
+  def if_equals_a?(*others, &block);                     if_a?(*others.merge_options(:conditions  => in?(others)), &block); end
+  def unless_equals_a?(*others, &block);          if_equals_a?(*others.merge_options(:opposite    => true),             &block); end
+  def only_if_equals_a?(*others, &block);         if_equals_a?(*others.merge_options(:else        => nil),              &block); end
+  def only_unless_equals_a?(*others, &block); unless_equals_a?(*others.merge_options(:else        => nil),              &block); end
+  def assuming_equals_a(*others, &block);         if_equals_a?(*others.merge_options(:chain       => true),             &block); end
+
   #########################
   # Custom conditionals. ##
   #########################
@@ -69,20 +69,20 @@ class Object
   def unless?(*args, &block);           if?(*args.merge_options(:opposite   => true),                       &block); end
   def only_if?(*args, &block);          if?(*args.merge_options(:else       => nil),                        &block); end
   def only_unless?(*args, &block); only_if?(*args.merge_options(:opposite   => true),                       &block); end
-  #def assuming(*args, &block);          if?(*args.merge_options(:chain      => true),                       &block); end      
-  
+  #def assuming(*args, &block);          if?(*args.merge_options(:chain      => true),                       &block); end
+
   #########################
   # Utilities            ##
   #########################
   def present_else_nil;     present_else(nil);     end
   def significant_else_nil; significant_else(nil); end
-  
+
   protected
   def present_else(other);     if?(:present?,     :else => other) { self }; end
   def significant_else(other); if?(:significant?, :else => other) { self }; end
-  
+
   private
   def resolve_conditions(varied)
-    varied.is_a?(Symbol) ? __send__(varied) : varied.is_a?(Array) ? __send__(*varied) : varied.is_a?(String) ? varied[0] =~ /\./ ? __send__(:eval, "self#{varied}") : eval(varied) : !!varied
+    varied.is_a?(Symbol) ? __send__(varied) : varied.is_a?(Array) ? __send__(*varied) : varied.is_a?(String) ? varied =~ /^\./ ? __send__(:eval, "self#{varied}") : eval(varied) : !!varied
   end
 end

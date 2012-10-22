@@ -35,7 +35,7 @@ class SchrodingersCat
     class_eval %{ def #{meth}; MODEL_OBJECT.#{meth}; end; }
   end
   #delegate *[ 'inspect', 'to_s', 'to_i', 'nil?', 'empty?' ,'blank?' ].map(&:intern), :to => :MODEL_OBJECT
-  
+
   # if Rails.env.development?
   #   def inspect; "nil (SchrodingersCat)"; end
   # end
@@ -44,7 +44,7 @@ class SchrodingersCat
     class_eval %{ def #{meth}(other); MODEL_OBJECT.#{meth}(other); end; }
   end
   #delegate *[ "==", "eql?", "&", "^", "|" ].map(&:intern), :to => :MODEL_OBJECT
-  
+
   def dup; nil; end
 
   def method_missing(method_sym, *arguments, &block)

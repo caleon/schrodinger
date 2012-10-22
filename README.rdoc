@@ -2,6 +2,8 @@
 
 == Usage:
 
+    gem 'schrodingers-cat'
+    # or with GitHub for latest:
     gem 'schrodinger', :git => "git://github.com/caleon/schrodinger.git"
 
 == Use case:
@@ -94,4 +96,4 @@ http://github.com/caleon/schrodinger/contributors
 
 == License
 
-MIT License. Copyright 2011 caleon.
+MIT License. Copyright 2011-2012 caleon.
