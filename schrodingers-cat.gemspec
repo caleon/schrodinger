@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "schrodingers-cat"
-  s.version = "1.0.0"
+  s.version = "1.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["caleon"]
-  s.date = "2012-10-22"
+  s.date = "2012-10-23"
   s.description = "    The Schrodinger's Cat gem is a library that boasts neither novelty or\n    ingenuity, just the potential for writing more efficient code when it comes\n    to (and we've all been there) dealing with the ubiquitous cases wherein the\n    existence (or nil'ness) of the object referenced is ever in flux. To this\n    end, Schrodinger's Cat defines Object-level methods designed for theses\n    common cases.\n"
   s.email = "caleon@gmail.com"
   s.extra_rdoc_files = [
@@ -33,6 +33,7 @@ Gem::Specification.new do |s|
     "lib/schrodingers_cat/dependencies.rb",
     "lib/schrodingers_cat/schrodingers_cat.rb",
     "lib/tasks/schrodinger_tasks.rake",
+    "schrodingers-cat.gemspec",
     "spec/schrodingers-cat_spec.rb",
     "spec/spec_helper.rb"
   ]
@@ -52,7 +53,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<jeweler>, ["~> 1.8.4"])
       s.add_development_dependency(%q<i18n>, [">= 0"])
       s.add_development_dependency(%q<activesupport>, [">= 3.1.0"])
-      s.add_development_dependency(%q<justools>, ["~> 1.1.8"])
+      s.add_development_dependency(%q<justools>, ["~> 1.2.0"])
     else
       s.add_dependency(%q<rspec>, ["~> 2.11.0"])
       s.add_dependency(%q<rdoc>, ["~> 3.12"])
@@ -60,7 +61,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<jeweler>, ["~> 1.8.4"])
       s.add_dependency(%q<i18n>, [">= 0"])
       s.add_dependency(%q<activesupport>, [">= 3.1.0"])
-      s.add_dependency(%q<justools>, ["~> 1.1.8"])
+      s.add_dependency(%q<justools>, ["~> 1.2.0"])
     end
   else
     s.add_dependency(%q<rspec>, ["~> 2.11.0"])
@@ -69,7 +70,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<jeweler>, ["~> 1.8.4"])
     s.add_dependency(%q<i18n>, [">= 0"])
     s.add_dependency(%q<activesupport>, [">= 3.1.0"])
-    s.add_dependency(%q<justools>, ["~> 1.1.8"])
+    s.add_dependency(%q<justools>, ["~> 1.2.0"])
   end
 end
 
