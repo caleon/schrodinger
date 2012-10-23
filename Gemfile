@@ -13,5 +13,5 @@ group :development do
   # gem "rcov", ">= 0"
   gem 'i18n'
   gem 'activesupport', '>= 3.1.0'
-  gem 'justools', '~> 1.1.8', :github => 'caleon/justools'
+  gem 'justools', '~> 1.2.0'
 end
